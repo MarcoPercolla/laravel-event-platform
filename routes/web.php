@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\TagController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +28,8 @@ Route::middleware(['auth'])
         Route::get('/', function () {
             return view("admin.dashboard");
         })->name('dashboard');
+        Route::resource('events', EventController::class);
+
+        Route::resource('tags', TagController::class);
     });
 require __DIR__ . '/auth.php';
