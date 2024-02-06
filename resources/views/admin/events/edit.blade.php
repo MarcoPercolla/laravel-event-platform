@@ -57,6 +57,7 @@
                     $game->tags->toArray());
                     
                     @endphp --}}
+                    <option selected value="">nessun tag</option>
                     @foreach ($tags as $tag)
                     
                         {{-- @if (in_array($tag->id, $game_tag_ids)) --}}

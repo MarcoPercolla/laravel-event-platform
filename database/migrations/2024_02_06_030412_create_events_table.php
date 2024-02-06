@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign("user_id")->references("id")->on("users")->nullOnDelete();
             $table->string("name");
             $table->date("date");
-            $table->integer("available_tickets");
+            $table->integer("available_tickets")->nullable();
             $table->timestamps();
         });
     }

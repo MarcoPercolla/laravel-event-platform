@@ -5,6 +5,9 @@
             @foreach ($events as $event)
                 <a class="link-info text-decoration-none" href="{{ route('admin.events.show', $event->id) }}">
                     <h2>{{ $event->name }}</h2>
+                    <p>{{ $event->available_tickets }}</p>
+                    <p>{{ $event->date }}</p>
+
 
                     @if ($event->tags)
                         @foreach ($event->tags as $tag)

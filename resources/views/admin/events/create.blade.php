@@ -48,7 +48,7 @@
             <div class="mb-3">
                 <label for="tags" class="form-label">seleziona i tag associati</label>
                 <select multiple name="tags[]" id="tags" class="form-select">
-                    <option selected value="">seleziona almeno un tag</option>
+                    <option selected value="">nessun tag</option>
                     @foreach ($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach

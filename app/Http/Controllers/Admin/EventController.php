@@ -48,7 +48,7 @@ class EventController extends Controller
         $new_event->fill($validati);
         $new_event->save();
         if ($request->tags) {
-            $new_event->tags()->sync($request->tags);
+            $new_event->tags()->attach($request->tags);
         }
         return redirect()->route('admin.events.index');
     }
@@ -90,10 +90,13 @@ class EventController extends Controller
 
 
         $event->fill($validati);
-        if ($request->tags) {
-            $event->tags()->sync($request->tags);
-        }
         $event->update();
+        if ($request->filled("tags")) {
+
+            $request["tags"] = array_filter($request["tags"]) ? $request["tags"] : [];  //Livecoding con Luca
+            $event->tags()->sync($request["tags"]);
+        }
+
 
         return redirect()->route("admin.events.index");
     }
