@@ -38,7 +38,7 @@ class TagSeeder extends Seeder
             ],
             [
                 'name' => 'sport',
-                'color' => 'red',
+                'color' => 'grey',
             ],
         ];
 
