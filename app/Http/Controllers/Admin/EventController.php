@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
 use App\Models\Tag;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class EventController extends Controller
 {
@@ -46,6 +48,7 @@ class EventController extends Controller
 
         $new_event = new Event;
         $new_event->fill($validati);
+        $new_event["user_id"] = Auth::id();
         $new_event->save();
         if ($request->tags) {
             $new_event->tags()->attach($request->tags);
