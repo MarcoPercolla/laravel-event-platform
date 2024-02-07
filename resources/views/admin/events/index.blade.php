@@ -7,6 +7,7 @@
                     <h2>{{ $event->name }}</h2>
                     <p>{{ $event->available_tickets }}</p>
                     <p>{{ $event->date }}</p>
+                    <p>creato da:{{ $event->user->name }}</p>
 
 
                     @if ($event->tags)
