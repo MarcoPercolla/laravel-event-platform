@@ -27,4 +27,13 @@ Route::get("/utenti", function () {
     return response()->json($dati);
 });
 
+Route::get("/utenti/{id}", function ($id) {
+
+    $dati = User::all();
+    $datiID = $id;
+
+    return response()->json($dati[$datiID]);
+});
+
+
 Route::get("/events", [EventController::class, "index"]);
