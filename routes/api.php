@@ -29,10 +29,10 @@ Route::get("/utenti", function () {
 
 Route::get("/utenti/{id}", function ($id) {
 
-    $dati = User::all();
-    $datiID = $id;
+    $dati = User::find($id);
+    // $datiID = $id;
 
-    return response()->json($dati[$datiID]);
+    return response()->json($dati);
 });
 
 
