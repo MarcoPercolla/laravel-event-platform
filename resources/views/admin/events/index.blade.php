@@ -1,30 +1,33 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="container p-5">
-        <div class="row">
-            @foreach ($events as $event)
-                <a class="link-info text-decoration-none" href="{{ route('admin.events.show', $event->id) }}">
-                    <h2>{{ $event->name }}</h2>
-                    <p>{{ $event->available_tickets }}</p>
-                    <p>{{ $event->date }}</p>
-                    <p>creato da:{{ $event->user->name }}</p>
+    <div class="myContainer">
+        
+        @foreach ($events as $event)
+        <div class="card">
+
+           
+            <h2>{{ $event->name }}</h2>
+            <p>{{ $event->available_tickets }}</p>
+            <p>{{ $event->date }}</p>
+            <p>creato da:{{ $event->user->name }}</p>
 
 
-                    @if ($event->tags)
-                        @foreach ($event->tags as $tag)
-                            <p class= {{$tag->color}}>{{ $tag->name }}</p>
-                        @endforeach
-                    @endif
-                </a>
-                <a type="button" class="btn btn-primary" href="{{ route('admin.events.show', $event->id) }}">Show</a>
-                <a type="button" class="btn btn-success" href="{{ route('admin.events.edit', $event->id) }}">Edit</a>
-                <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="elimina">
-                </form>
-            @endforeach
-        </div>
+            @if ($event->tags)
+                @foreach ($event->tags as $tag)
+                    <p class= {{$tag->color}}>{{ $tag->name }}</p>
+                @endforeach
+            @endif
+            
+            <a type="button" class="btn btn-primary" href="{{ route('admin.events.show', $event->id) }}">Show</a>
+            <a type="button" class="btn btn-success" href="{{ route('admin.events.edit', $event->id) }}">Edit</a>
+            <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" value="elimina">
+            </form>
+        </div>    
+        @endforeach
+       
     </div>
 @endsection
 
@@ -82,5 +85,20 @@ text-align: center;
 padding: 0.1rem;
 border-radius: 0.4rem
 
+}
+
+.card{
+    width: 30%;
+    margin: 0.3rem auto;
+}
+
+.myContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+a{
+    text-decoration: none
 }
 </style>
