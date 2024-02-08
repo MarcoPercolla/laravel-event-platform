@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EventController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,5 @@ Route::get("/utenti", function () {
 
     return response()->json($dati);
 });
+
+Route::get("/events", [EventController::class, "index"]);
