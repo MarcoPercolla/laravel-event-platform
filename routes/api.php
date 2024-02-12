@@ -37,3 +37,4 @@ Route::get("/utenti/{id}", function ($id) {
 
 
 Route::get("/events", [EventController::class, "index"]);
+Route::get("/events/{id}", [EventController::class, "show"]);
