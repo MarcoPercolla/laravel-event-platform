@@ -19,7 +19,7 @@ class EventController extends Controller
     }
     public function show($id)
     {
-        $event = Event::with(['user:name', 'tags:name'])->find($id);
+        $event = Event::with(['user', 'tags:name'])->find($id);
         return response()->json([
             "success" => $event ? true : false,
             "payload" => $event ? $event : "Nessun evento corrispondente all'id"
